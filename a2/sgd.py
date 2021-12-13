@@ -3,11 +3,13 @@
 # Save parameters every a few SGD iterations as fail-safe
 SAVE_PARAMS_EVERY = 5000
 
-import pickle
 import glob
-import random
-import numpy as np
 import os.path as op
+import pickle
+import random
+
+import numpy as np
+
 
 def load_saved_params():
     """
@@ -86,7 +88,8 @@ def sgd(f, x0, step, iterations, postprocessing=None, useSaved=False,
 
         loss = None
         ### YOUR CODE HERE (~2 lines)
-
+        loss, grad = f(x)
+        x = x - step * grad
         ### END YOUR CODE
 
         x = postprocessing(x)
